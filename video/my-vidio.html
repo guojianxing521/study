@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义播放器</title>
+	<link rel="stylesheet" href="css/font-awesome.css"/>
+    <link rel="stylesheet" href="css/player.css"/>
+</head>
+<body>
+    <figure>
+    <figcaption>视频播放器</figcaption>
+    <div class="player">
+        <video src="./video/fun.mp4"></video>
+        <div class="controls">
+            <!--播放/暂停-->
+            <a href="javascript:;" class="switch fa fa-play"></a>
+            <!--播放进度-->
+            <div class="progress">
+                <div class="line"></div>
+                <div class="bar"></div>
+            </div>
+            <!--当前播放时间/播放总时长-->
+            <div class="timer">
+                <span class="current">00:00:00</span> / <span class="total">00:00:00</span>
+            </div>
+            <!--全屏/取消全屏-->
+            <a href="javascript:;" class="expand fa fa-arrows-alt"></a>
+        </div>
+    </div>
+</figure>
+<!-- 第一步：引入文件 -->
+<!-- 注意 ：视频方法必须用dom元素才能操作，获取video要用dom获取 -->
+<!-- return (h <10? '0'+h:h)+':'+(m <10? '0'+m:m)+':'+(s <10? '0'+s:s);//注意加括号 -->
+
+	<script src="js/jquery.min.js"></script>
+	<script>
+	   //获取相关元素
+	   var $video = $('video');
+	   var video = $video.get(0);
+	   var $current = $('.current');
+	   var $total = $('.total');
+       
+       /*1.加载效果 总时长显示*/
+    
+       $video.on('canplay',function(){
+       	//当浏览器可以播放音频/视频时,让视频显示
+          $video.show();
+        //获取当前视频的总时间
+        //duration//返回当前音频/视频的长度（以秒计）
+         
+         var totaltime = getTime(video.duration);
+         // console.log(totaltime);
+         // console.log(getTime(totaltime));
+         $total.html(totaltime);
+
+       })
+       //格式化时间的函数
+       function getTime(time){
+
+       	var h = parseInt(time/3600);
+       	var m = parseInt(time%3600/60);
+       	var s = parseInt(time%60);
+       	return (h <10? '0'+h:h)+':'+(m <10? '0'+m:m)+':'+(s <10? '0'+s:s);//注意加括号
+       }
+       /*2.播放功能 / 暂停功能*/
+        var $switch = $('.switch');
+        var switch1 = $switch.get(0);
+        // console.log(switch1);
+        console.log(switch1.classList.contains('fa-play'))
+     
+        $switch.on('click',function(){
+         
+         //play()开始播放音频/视频
+         //判断当前视频的状态
+         if(switch1.classList.contains('fa-play')){
+         	video.play();
+         	//去掉该类,字体图标
+            $(this).removeClass('fa-play').addClass('fa-pause');
+         }else{
+         	video.pause();
+         	 $(this).removeClass('fa-pause').addClass('fa-play');
+         }
+          
+        })
+       /*3.播放中进度条显示 当前播放时间的显示*/
+       //currenTime设置或返回音频/视频中的当前播放位置（以秒计）
+       //timeupdate当目前的播放位置已更改时
+       var $current = $('.current');
+       var $line = $('.line');
+       var $bar = $('.bar');
+       $video.on('timeupdate',function(){
+
+       	 // console.log(video.currentTime);
+       	 var currentTime = getTime(video.currentTime);
+       	 $current.html(currentTime);
+       	 //进度条
+       	 var jindu = video.currentTime/video.duration*100+"%";
+       	 $line.css('width',jindu);
+
+       })
+       
+       /*4.全屏/取消全屏*/
+       // 存在兼容模式
+       var $expand = $('.expand');
+       var expand = $expand.get(0);
+       console.log(expand)
+       //怎么获取的元素就用什么方法
+       $expand.on('click',function(){
+
+         if($expand.hasClass('fa-arrows-alt')){
+
+       	 video.webkitRequestFullScreen();
+       	 //去除该类，添加另外一个类，字体图标
+       	 $expand.addClass('fa-compress').removeClass('fa-arrows-alt');
+        }else{
+           //取消全屏只能给document加，才能起作用
+           document.webkitCancelFullScreen();
+           $expand.removeClass('fa-compress').addClass('fa-arrows-alt');
+        }
+     })
+    
+       /*5.跃进功能*/
+       $bar.on('click',function(e){
+       	//offsetX 相对于自己的点击位置
+          // console.log(e);
+          //不带参数获取第一个匹配元素的宽度，带参数是设置所有匹配元素的宽度
+          var pos = e.offsetX/$bar.width()*video.duration;
+          // console.log(pos);
+           //改变当前的视频播放位置
+          //触发播放位置改变事件
+          video.currentTime = pos;
+         
+         
+
+       })
+       /*6.播放完毕重置功能*/
+       $video.on('ended',function(){
+       	//返回音频/视频的播放是否已结束
+       	//改变当前的时间
+       	video.currentTime = 0;
+       	//修改对应的类
+       	$switch.removeClass('fa-pause').addClass('fa-play');
+       })
+ </script>
+</body>
+</html>
