@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin-left: 300px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li,div{
+            width: 250px;
+            padding: 10px 0;
+            margin-left: 10px;
+            border-bottom: 1px dashed #ccc;
+            height: 20px;
+        }
+        a{
+            float: right;
+        }
+        input{
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<input type="search" placeholder="输入搜索关键字"/>
+<input type="button" value="搜索"/>
+<div><a href="javascript:;" class="clear">清空搜索记录</a></div>
+<ul>
+    <li>没有搜索记录</li>
+</ul>
+<script src="jquery.min.js"></script>
+<script>
+    $(function () {
+        /*1.使用json数据存储搜索历史记录*/
+        /*2.预设一个key   historyList */
+        /*3.数据格式列表 存的是json格式的数组*/
+        /*4. [电脑，手机，。。。。]*/
+        
+        /*1.默认根据历史记录渲染历史列表*/
+        //console.log(localStorage)
+        //Storage {guo: "18", historyList: "["日发售的","士大夫","士大夫"]", length: 2}
+        //考虑为空的情况
+         var historyListJSON = localStorage.getItem('historyList')||'[]';//"["日发售的","士大夫","士大夫"]"
+         // console.log(historyListJSON);
+         var historyListArr = JSON.parse(historyListJSON);
+         // console.log(historyListArr);
+         var oUl = document.getElementsByTagName('ul')[0];
+         // console.log(oUl);
+         //渲染函数
+        function render(){
+           
+            var str = '';
+            historyListArr.forEach(function(item,i){
+                str +='<li><span>'+item+'</span><a href="#" data-index='+i+'>删除</a></li>';
+            })
+            str = str || '<li><span>没有搜索记录</span></li>';
+            //放入页面中
+            oUl.innerHTML = str;                                     
+            // console.log(str);
+        }
+         render();
+
+
+
+        /*2.点击搜索的时候更新历史记录渲染列表*/
+        $('[type="button"]').on('click',function(){
+            var inner = $.trim($('[type ="search"]').val());
+            // console.log(inner);
+            if(!inner){
+                alert('请输入内容');
+                return;
+            }
+            historyListArr.push(inner);
+            //保存
+            localStorage.setItem('historyList',JSON.stringify(historyListArr));
+            //清空输入框内容
+            $('[type="search"]').val('');
+            render();
+
+        })
+       
+        /*3.点击删除的时候删除对应的历史记录渲染列表*/
+          $('ul').on('click','a',function(){
+             var index = $(this).data('index');
+             // console.log(index);
+             //删除数组对应的那一项
+             historyListArr.splice(index,1);
+             //保存
+             localStorage.setItem('historyList',JSON.stringify(historyListArr));
+             //渲染
+             render();
+
+          })
+
+        /*4.点击清空的时候清空历史记录渲染列表*/
+
+        $('.clear').on('click',function(){
+            // console.log(1);
+            //清空数组
+            historyListArr = [];
+            //保存
+            localStorage.setItem('historyList','');
+            render();
+        })
+      })
+</script>
+</body>
+</html>
