@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>折线图</title>
+	<style>
+      canvas{
+      	border: 1px dashed #000;
+      }
+	</style>
+</head>
+<body>
+  <canvas width="600" height="600"></canvas>
+	<script>
+	 //构造函数
+	 //大bug，一定要开新路径，会覆盖
+	function  lineChart(canvas){
+        //获取元素
+		this.myCanvas = canvas || document.querySelector('canvas');
+		//获取绘图工具
+		this.ctx = this.myCanvas.getContext('2d');
+		//===================网格部分==================================
+		//获取画布的高度和宽度
+		this.canvasHeight = this.ctx.canvas.height;
+		this.canvasWidth = this.ctx.canvas.width;
+		this.gridSize = 10;
+		//=====================坐标轴部分==========================================
+		this.space = 20;
+		this.arrowSize = 14;
+		//==================绘制点部分===================================
+		this.dottedSize =4;
+
+
+	}
+	//初始化函数
+	//注意写this
+	lineChart.prototype.init= function (data){
+        this.drawGrid();
+        this.drawAxis();
+        this.drawDotted(data);
+        // console.log(prevy);
+	}
+	//绘制网格
+	lineChart.prototype.drawGrid = function(){
+       //计算要画的条数
+       var xLineTotal = Math.floor(this.canvasHeight/this.gridSize);
+       var yLineTotal = Math.floor(this.canvasWidth/this.gridSize);
+
+   
+       for(var i = 1;i < xLineTotal;i++){
+            this.ctx.beginPath();
+       	    this.ctx.beginPath();
+       	    this.ctx.moveTo(0,i*this.gridSize);
+       	    this.ctx.lineTo(this.canvasWidth,i*this.gridSize);
+       	    this.ctx.strokeStyle ='#ccc';
+       	    this.ctx.stroke();
+
+       }
+        for(var i = 1;i < yLineTotal;i++){
+       	    this.ctx.beginPath();
+       	    this.ctx.moveTo(i*this.gridSize,0);
+       	    this.ctx.lineTo(i*this.gridSize,this.canvasHeight);
+       	    this.ctx.stroke();
+       }
+    
+	}
+	//绘制坐标轴
+	lineChart.prototype.drawAxis = function(){
+       //x轴
+       this.ctx.beginPath();
+  
+       this.ctx.moveTo(this.space,this.canvasHeight-this.space);
+       this.ctx.lineTo(this.canvasWidth-this.space,this.canvasHeight-this.space);
+       this.ctx.lineTo(this.canvasWidth-this.space-this.arrowSize,this.canvasHeight-this.space+this.arrowSize/2);
+       this.ctx.lineTo(this.canvasWidth-this.space-this.arrowSize,this.canvasHeight-this.space-this.arrowSize/2);
+       this.ctx.lineTo(this.canvasWidth-this.space,this.canvasHeight-this.space);
+       this.ctx.strokeStyle ='#000';
+       // this.ctx.linewidth = 2;
+       this.ctx.fill();
+       this.ctx.stroke(); 
+
+        //y轴
+       this.ctx.beginPath();
+       this.ctx.moveTo(this.space,this.canvasHeight-this.space);
+       this.ctx.lineTo(this.space,this.space);
+       this.ctx.lineTo(this.space+this.arrowSize/2,this.space+this.arrowSize);
+       this.ctx.lineTo(this.space-this.arrowSize/2,this.space+this.arrowSize);
+       this.ctx.lineTo(this.space,this.space);
+       this.ctx.strokeStyle ='#000';
+       this.ctx.linewidth = 2;
+       this.ctx.fill();
+       this.ctx.stroke(); 
+
+	}
+	//绘制点
+	lineChart.prototype.drawDotted = function(data){
+        //遍历数据
+        //注意大写
+        //注意存一下this
+        var that = this;
+        // var prevx = 0;
+        // var prevy = 0;
+        data.forEach(function(item,i){
+            // console.log(item);
+            // console.log(i);
+        	var x = item.x + that.space;
+        	var y = that.canvasHeight-item.y - that.space;
+           
+            
+            // console.log(that.space);
+            that.ctx.beginPath();
+            that.ctx.moveTo(x-that.dottedSize,y-that.dottedSize);      
+            that.ctx.lineTo(x+that.dottedSize,y-that.dottedSize);      
+            that.ctx.lineTo(x+that.dottedSize,y+that.dottedSize);   
+            that.ctx.lineTo(x-that.dottedSize,y+that.dottedSize);
+            that.ctx.closePath();
+            that.ctx.fill();
+            that.ctx.stroke();  
+            //  //连线
+            if(i==0){
+            that.ctx.beginPath();
+            that.ctx.moveTo(that.space,that.canvasHeight-that.space);
+            that.ctx.lineTo(x,y); 
+            that.ctx.stroke(); 
+
+
+            }else{
+
+            that.ctx.beginPath();
+            that.ctx.moveTo(prevx,prevy);
+            that.ctx.lineTo(x,y); 
+            that.ctx.stroke(); 
+            
+            } 
+             prevx = x;
+             prevy = y;
+         
+        })
+         
+       
+
+	}
+	// console.log(prevy);
+	//数据
+	var data = [
+		{
+			x:100,
+			y:400
+		},
+		{
+			x:200,
+			y:300
+		},
+		{
+			x:300,
+			y:200
+		},
+		{
+			x:350,
+			y:100
+		},
+		{
+			x:360,
+			y:150
+		},
+		{
+			x:400,
+			y:180
+		},
+		{
+			x:450,
+			y:250
+		}
+	];
+	//实例化别忘了
+	var lineChart = new lineChart();  
+	//调用初始化函数
+	lineChart.init(data);
+	</script>
+</body>
+</html>

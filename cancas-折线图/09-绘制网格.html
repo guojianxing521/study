@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>坐标轴</title>
+</head>
+<style>
+	canvas{
+       border: 1px solid #ccc;
+	}
+/*	.box{
+		height: 300px;
+		width: 300px;
+		border: 1px solid #ccc;
+	}*/
+</style>
+<body>
+ <canvas width="500" height="500"></canvas>
+ <div class="box"></div>
+	<script>
+	//获取元素
+	var myCanvas = document.querySelector('canvas');
+	//获取上下文、画图工具
+    var ctx = myCanvas.getContext('2d');
+    //设置绘图的起始位置
+    // ctx.moveTo(100,100);
+    //绘制路径
+    // ctx.lineTo(200,100);
+    //描边
+    // ctx.stroke();
+    //获取网格的大小
+    // console.log(ctx.canvas.height);
+    // console.log(myCanvas.height);
+    // console.log(document.querySelector('.box')  .height)//不行
+     
+    var canvasHeight = ctx.canvas.height;
+    var canvasWidth = ctx.canvas.width;
+    //网格的大小
+    var gridSize = 20;
+    //计算画多少行
+    var xLineTotal = Math.floor(canvasHeight/gridSize);
+    var yLineTotal = Math.floor(canvasWidth/gridSize);
+
+    for(i=0;i<xLineTotal;i++){
+        
+        ctx.beginPath();
+        ctx.moveTo(0,i*gridSize-0.5);
+        ctx.lineTo(canvasWidth,i*gridSize-0.5);
+        ctx.strokeStyle='#eee';
+        ctx.stroke();
+    }
+      for(i=0;i<yLineTotal;i++){
+        
+        ctx.beginPath();
+        ctx.moveTo(i*gridSize-0.5,0);
+        ctx.lineTo(i*gridSize-0.5,canvasHeight);
+        ctx.strokeStyle='#eee';
+        ctx.stroke();
+    }
+	</script>
+</body>
+</html>

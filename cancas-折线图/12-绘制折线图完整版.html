@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas体验</title>
+	<style>
+	/*不建议在样式里面设置尺寸*/
+	/*你画的东西也会被放大*/
+      canvas{
+      	border:1px solid #ccc;
+   
+      }
+	</style>
+</head>
+<body>
+	<!-- 1.准备画布 -->
+	<canvas width='600' height="600"></canvas>
+	<!-- 2.准备画图工具 -->
+	<script>
+		// 获取元素
+		var mycanvas = document.querySelector('canvas');
+		// 获取上下文，绘制工具箱
+		var ctx = mycanvas.getContext('2d');	
+	    // 3.开始画图
+		// 绘制网格
+		//网格的大小
+		var grid = 10;
+		//画多少x轴方向的线
+		//DOM方式
+		var canvasHeight = mycanvas.height;
+		// var canvasWidth = canvas.width;
+		// var canvasHeight = ctx.canvas.height;
+
+		console.log(canvasHeight);
+		//画多少y轴方向的线
+		//2绘制坐标轴
+		//3绘制点
+		//完整的折线图
+
+		//1.构造函数
+		
+        function lineChart = function(){
+        	//获取上下文，绘图工具
+        	this.ctx = ctx || document.querySelector('canvas').getContext('2d');
+        	//画布的大小
+        	this.canvasWidth = this.ctx.canvas.width;
+        	this.canvasHeight= this.ctx.canvas.height;
+        	//网格的大小
+        	this.gridSize = 10;
+        	// 坐标系的间距
+        	this.apace = 20;
+        	// 箭头的大小
+        	this.arrowSize = 10;
+        	// 绘制点
+        	this.dottedSize = 6;
+        	//点的坐标，和数据有关系，数据可视化
+        }
+        //2.行为方法
+    
+        lineChart.prototype.init = function(data){
+        	this.drawGrid();
+        	this.drawAxis();
+        	this.drawDotted(data);
+
+        }
+     // 绘制网格
+        lineChart.prototype.drawGrid = function(){
+            // x方向的线
+            //y轴的线
+// 
+        }
+        //绘制坐标系
+        lineChart.prototype.drawAxis = function(){
+
+// 
+        }
+        // 绘制所有点
+        lineChart.prototype.drawDotted = function(data){
+        	
+        }
+		//3.初始化
+		 new data = [
+		 {
+		 	x:100,
+		 	y:100
+		 },
+		 {
+		 	x:200,
+		 	y:200
+		 },
+		 {
+		 	x:300,
+		 	y:300
+		 },
+		 {
+		 	x:400,
+		 	y:100
+		 }
+		 ];
+		 var lineChart = new lineChart();
+
+		 lineChart(data);
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

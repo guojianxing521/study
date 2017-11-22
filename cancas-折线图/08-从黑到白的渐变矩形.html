@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渐变 </title>
+	<style>
+	/*不建议在样式里面设置尺寸*/
+	/*你画的东西也会被放大*/
+      canvas{
+      	border:1px solid #ccc;
+   
+      }
+	</style>
+</head>
+<body>
+	<!-- 1.准备画布 -->
+	<canvas width='1000' height="1000"></canvas>
+	<!-- 2.准备画图工具 -->
+	<script>
+		// 获取元素
+		var canvas = document.querySelector('canvas');
+		// 获取上下文，绘制工具箱
+		var ctx = canvas.getContext('2d');
+
+		// ctx.moveTo(100,100);
+		// ctx.lineTo(200,100);
+		// ctx.lineWidth = 30;
+		// ctx.strokeStyle = 'red';
+       //ctx.stroke();
+        //线是由点构成的
+         ctx.lineWidth = 30;
+          // ctx.beginPath();
+          // ctx.moveTo(100-1,100);
+          // ctx.lineTo(1000,100);
+         for(i=0;i<255*2;i++){
+
+         	 ctx.beginPath();
+         	 ctx.moveTo(100+i-1,100);
+         	 ctx.lineTo(100+i,100);
+         	 ctx.strokeStyle ='rgb('+i/2+','+0+','+0+')';
+         	 ctx.stroke();
+
+         }
+        
+	</script>
+	
+</body>
+</html>

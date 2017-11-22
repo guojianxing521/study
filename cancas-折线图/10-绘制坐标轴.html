@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制折线图</title>
+</head>
+<style>
+	canvas{
+		border: 1px solid #ccc;
+	}
+</style>
+<body>
+	<canvas width="400" height="400"></canvas>
+	<script>
+		var mycanvas = document.querySelector('canvas');
+
+		var ctx = mycanvas.getContext('2d');
+        
+        //坐标原点位置
+        //  /*3.确定距离画布旁边的距离*/
+        var space = 20;
+        var arrowSize = 10;
+
+        var canvasWidth = ctx.canvas.width;
+        var canvasHeight = ctx.canvas.height;
+        //x轴
+        ctx.beginPath();
+        ctx.moveTo(space,canvasHeight-space);
+        ctx.lineTo(canvasWidth-space,canvasHeight-space);
+        ctx.lineTo(canvasWidth-space-arrowSize,canvasHeight-space+arrowSize/2);
+        ctx.lineTo(canvasWidth-space-arrowSize,canvasHeight-space-arrowSize/2)
+        ctx.lineTo(canvasWidth-space,canvasHeight-space);
+        ctx.fill();
+        ctx.stroke();
+        //y轴
+        ctx.beginPath();
+        ctx.moveTo(space,canvasHeight-space);
+        ctx.lineTo(space,space);
+        ctx.lineTo(space+arrowSize/2,space+arrowSize);
+        ctx.lineTo(space-arrowSize/2,space+arrowSize)
+        ctx.lineTo(space,space);
+      
+        ctx.fill();
+        ctx.stroke();
+
+
+	</script>
+</body>
+</html>

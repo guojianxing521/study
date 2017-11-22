@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas体验</title>
+	<style>
+	/*不建议在样式里面设置尺寸*/
+	/*你画的东西也会被放大*/
+      canvas{
+      	border:1px solid #ccc;
+   
+      }
+	</style>
+</head>
+<body>
+	<!-- 1.准备画布 -->
+	<canvas width='600' height="600"></canvas>
+	<!-- 2.准备画图工具 -->
+	<script>
+		// 获取元素
+		var canvas = document.querySelector('canvas');
+		// 获取上下文，绘制工具箱
+		var ctx = canvas.getContext('2d');	
+	    // 3.开始画图
+		// 移动画笔
+		// 蓝色 10px
+		//===========================================================
+		//开启新路径
+		ctx.beginPath();
+		ctx.moveTo(100,100.5);
+		// 绘制直线
+		ctx.lineTo(300,100.5)
+		//设置颜色和宽度
+		ctx.strokeStyle = 'blue';
+		ctx.lineWidth = 10;
+		//位置
+		ctx.stroke();
+        //红色 20px;
+        ctx.beginPath();
+		ctx.moveTo(100,200);
+		ctx.lineTo(300,200);
+		ctx.strokeStyle = 'red';
+		ctx.lineWidth = 20;
+		ctx.stroke();
+        //绿色 30px
+        ctx.beginPath();
+		ctx.moveTo(100,300);
+		ctx.lineTo(300,300);
+		ctx.strokeStyle = 'green';
+		ctx.lineWidth = 30;
+		//描边
+		ctx.stroke();
+		// 默认为黑色 1px
+		//对其的点是线的中心位置
+		//会把线分为上下两个0.5，会不饱和，而且浏览器默认只能显示1px，所以会变为2px  
+
+
+	</script>
+	
+</body>
+</html>

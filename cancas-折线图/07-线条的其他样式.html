@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ctx.lineCap/ctx.lineCap/setLineDash()/lineDashOffset </title>
+	<style>
+	/*不建议在样式里面设置尺寸*/
+	/*你画的东西也会被放大*/
+      canvas{
+      	border:1px solid #ccc;
+   
+      }
+	</style>
+</head>
+<body>
+	<!-- 1.准备画布 -->
+	<canvas width='600' height="600"></canvas>
+	<!-- 2.准备画图工具 -->
+	<script>
+		// 获取元素
+		var canvas = document.querySelector('canvas');
+		// 获取上下文，绘制工具箱
+		var ctx = canvas.getContext('2d');	
+	    // 3.开始画图
+		// 移动画笔
+		// 蓝色 10px
+		//===========================================================
+		//开启新路径
+		ctx.beginPath();
+		ctx.moveTo(100,100);
+		// 绘制直线
+		ctx.lineTo(200,20);
+		ctx.lineTo(300,100)
+
+		//设置颜色和宽度
+		ctx.strokeStyle = 'blue';
+		ctx.lineWidth = 10;
+		//位置
+		ctx.lineCap = 'butt';
+		ctx.lineJoin = 'miter';
+		ctx.stroke();
+
+
+
+        //红色 20px;
+        ctx.beginPath();
+		ctx.moveTo(100,200);
+		ctx.lineTo(190,90);
+		ctx.lineTo(300,200);
+		ctx.strokeStyle = 'red';
+		ctx.lineWidth = 20;
+		ctx.lineCap = 'square';
+		ctx.lineJoin = 'bevel';
+
+		ctx.stroke();
+
+
+
+        //绿色 30px
+        ctx.beginPath();
+		ctx.moveTo(100,300);
+		ctx.lineTo(190,190);
+		ctx.lineTo(300,300);
+		ctx.strokeStyle = 'green';
+		ctx.lineWidth = 30;
+		ctx.lineCap = 'round';
+		ctx.lineJoin = 'round';
+
+		//描边
+		ctx.stroke();
+		
+		//
+        ctx.beginPath();
+		ctx.moveTo(100,400.5);
+		ctx.lineTo(300,400.5);
+	    ctx.setLineDash([5,10,15]);
+        //获取的是不重复的那一段的排列方式
+
+		
+		
+		console.log(ctx.getLineDash());
+		//lineDashOffset 设置虚线偏移量（负值向右偏移）
+        ctx.lineDashOffset = -20;
+        //描边
+        ctx.stroke();
+	</script>
+	
+</body>
+</html>

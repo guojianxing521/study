@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制点</title>
+	<style>
+      canvas{
+      	border: 1px solid #ccc;
+      }
+      .box{
+      	border: 1px solid #ccc;
+      }
+	</style>
+</head>
+<body>
+	<canvas width="600" height="600"></canvas>
+	<!-- <div class="box" width='100' height='100'></div> -->
+</body>
+<script>
+	var mycanvas = document.querySelector('canvas');
+	var ctx = mycanvas.getContext('2d');
+
+	//确定点坐标
+	var coordinate={
+		x:100,
+		y:100
+	}
+    //确定点宽
+    var dottedSize = 10;
+	ctx.moveTo(coordinate.x-dottedSize/2,coordinate.y-dottedSize/2);
+	ctx.lineTo(coordinate.x+dottedSize/2,coordinate.y-dottedSize/2);
+	ctx.lineTo(coordinate.x+dottedSize/2,coordinate.y+dottedSize/2);
+	ctx.lineTo(coordinate.x-dottedSize/2,coordinate.y+dottedSize/2);
+	ctx.closePath();
+	ctx.fill();
+	ctx.stroke();
+
+</script>
+</html>

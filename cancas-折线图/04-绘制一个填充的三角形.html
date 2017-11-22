@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+	/*不建议在样式里面设置尺寸*/
+	/*你画的东西也会被放大*/
+      canvas{
+      	border:1px solid #ccc;
+   
+      }
+	</style>
+</head>
+<body>
+	<!-- 1.准备画布 -->
+	<canvas width='600' height="600"></canvas>
+	<!-- 2.准备画图工具 -->
+	<script>
+		// 获取元素
+		var canvas = document.querySelector('canvas');
+		// 获取上下文，绘制工具箱
+		var ctx = canvas.getContext('2d');
+
+		//
+		ctx.moveTo(100,100);
+		ctx.lineTo(200,100);
+		ctx.lineTo(200,200);
+		// ctx.lineTo(100,100);
+		ctx.closePath();
+		ctx.lineWidth = 10;
+		// 起始点和lineTo的结束点无法自动闭合
+		//解决办法，使用canvas的自动闭合
+		//==================================
+        //填充
+        ctx.fill();//默认黑色
+        //描边
+		ctx.stroke();
+
+
+	</script>
+	
+</body>
+</html>

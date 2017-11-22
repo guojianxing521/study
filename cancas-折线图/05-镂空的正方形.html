@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+	/*不建议在样式里面设置尺寸*/
+	/*你画的东西也会被放大*/
+      canvas{
+      	border:1px solid #ccc;
+   
+      }
+	</style>
+</head>
+<body>
+	<!-- 1.准备画布 -->
+	<canvas width='600' height="600"></canvas>
+	<!-- 2.准备画图工具 -->
+	<script>
+		// 获取元素
+		var canvas = document.querySelector('canvas');
+		// 获取上下文，绘制工具箱
+		var ctx = canvas.getContext('2d');
+
+		//
+		// ctx.beginPath();
+		//顺势针
+		ctx.moveTo(100,100);
+		ctx.lineTo(200,100);
+		ctx.lineTo(200,200);
+		ctx.lineTo(100,200);
+		ctx.lineTo(100,100);
+        ctx.stroke();
+
+		// ctx.beginPath();
+		// ctx.moveTo(50,50);
+		// ctx.lineTo(250,50);
+		// ctx.lineTo(250,250);
+		// ctx.lineTo(50,250);
+		// // ctx.lineTo(50,50);
+		// ctx.closePath();
+	    
+        // ctx.beginPath();
+        //逆时针
+		ctx.moveTo(50,50);
+		ctx.lineTo(50,250);
+		ctx.lineTo(250,250);
+		ctx.lineTo(250,50);
+		
+	
+		// ctx.lineTo(50,50);
+		//自动闭合
+		ctx.closePath();
+        ctx.fillStyle='red';
+	    ctx.fill();
+		ctx.stroke();
+
+//看一个区域有没有被填充，从这个区域拉一条线，顺势针相交加一，逆时针相交减一，所有轨迹的值计算出来，非零就填充，是零不填充，非零环绕规则
+	</script>
+	
+</body>
+</html>
