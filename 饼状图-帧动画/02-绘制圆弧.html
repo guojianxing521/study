@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制圆弧</title>
+	<style>
+     canvas{
+     	border:1px solid #ccc;
+     }
+
+	</style>
+</head>
+<body>
+	<canvas width="500" height="500"></canvas>
+   <script>
+		var mycanvas = document.querySelector('canvas');
+		var ctx = mycanvas.getContext('2d');
+		// 绘制圆弧
+		//确定圆心 坐标x y
+		//圆半径 
+		// 确定起始绘制的位置和结束绘制的位置
+        //取得绘制的长度
+        var w = ctx.canvas.width;
+        var h = ctx.canvas.height;
+        //起始坐标，半径，开始弧度，结束弧度,方向（默认为顺势针）false
+        // ctx.arc(w/2,h/2,150,Math.PI/2,Math.PI);
+        // ctx.arc(w/2,h/2,150,Math.PI/2,Math.PI,true);
+        ctx.arc(w/2,h/2,150,0,Math.PI*3/2,true);
+
+        ctx.stroke();
+	</script>
+</body>
+</html>

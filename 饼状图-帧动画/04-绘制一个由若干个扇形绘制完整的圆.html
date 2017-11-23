@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制一个圆分成六等份，颜色随机</title>
+	<style>
+     canvas{
+     	border:1px solid #ccc;
+     }
+
+	</style>
+</head>
+<body>
+	<canvas width="500" height="500"></canvas>
+   <script>
+		var mycanvas = document.querySelector('canvas');
+		var ctx = mycanvas.getContext('2d');
+        var w = ctx.canvas.width;
+        var h = ctx.canvas.height;
+        //起始坐标，半径，开始弧度，结束弧度,方向（默认为顺势针）false
+
+        var num = 100;
+        var angle = Math.PI*2/num;
+        
+        var getColor = function(){
+            var r = Math.floor(Math.random()*256);
+            var g = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+            return 'rgb('+r+','+g+','+b+')';
+        }
+        ctx.moveTo(w/2,h/2);
+        for(var i = 0;i < num;i++){
+             var start = i*(-Math.PI*2/num);
+             var end = (i+1)*(-Math.PI*2/num);
+
+             ctx.beginPath();
+             ctx.moveTo(w/2,h/2);
+             ctx.arc(w/2,h/2,150,start,end,true);
+             //自动闭合，前提把起点放到中心点
+             ctx.closePath();
+             ctx.fillStyle = getColor();
+             ctx.fill();
+             
+             // ctx.stroke();
+        }
+       ;
+       
+       
+       
+     
+	</script>
+</body>
+</html>

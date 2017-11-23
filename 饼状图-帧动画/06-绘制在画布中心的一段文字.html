@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+     canvas{
+     	border:1px solid #ccc;
+     	margin: 0 auto;
+     }
+
+	</style>
+</head>
+<body>
+	<canvas width="500" height="500"></canvas>
+   <script>
+		var mycanvas = document.querySelector('canvas');
+		var ctx = mycanvas.getContext('2d');
+//===========================================
+var str = '您吃了吗';
+// 确定画布的中心
+//画一个十字架
+//画两条线
+var w = ctx.canvas.width;
+var h = ctx.canvas.height;
+ctx.beginPath();
+ctx.moveTo(0,h/2-0.5);
+ctx.lineTo(w,h/2-0.5);
+ctx.moveTo(w/2-0.5,0);
+ctx.lineTo(w/2-0.5,h);
+ctx.stroke();
+
+//绘制文本
+
+
+ctx.beginPath();
+//- ctx.font = '微软雅黑' 设置字体
+// - strokeText()
+// ctx.font = '40px 微软雅黑';
+// ctx.strokeStyle ='#000';
+// ctx.strokeText(str,w/2,h/2);
+
+// - fillText(text,x,y,maxWidth)
+//- text 要绘制的文本
+//- x,y 文本绘制的坐标（文本左下角）
+//绘制矩形是在左上角
+//- maxWidth 设置文本最大宽度，可选参数
+ctx.beginPath();
+
+ctx.font = '40px 微软雅黑';
+ctx.filleStyle ='#000';
+// - ctx.textAlign文本水平对齐方式，相对绘制坐标来说的
+//center left right start end
+//   - left
+//   - center
+//   - right
+//   - start 默认
+//   - end
+//   - direction属性css(rtl ltr) start和end于此相关
+//     - 如果是ltr,start和left表现一致
+//     - 如果是rtl,start和right表现一致
+// ctx.direction ='rtl';?????????????????
+ctx.textAlign = 'center';
+// - ctx.textBaseline 设置基线（垂直对齐方式  ）
+//   - top 文本的基线处于文本的正上方，并且有一段距离
+//   - middle 文本的基线处于文本的正中间
+//   - bottom 文本的基线处于文本的证下方，并且有一段距离
+//   - hanging 文本的基线处于文本的正上方，并且和文本粘合
+//   - alphabetic 默认值，基线处于文本的下方，并且穿过文字
+//   - ideographic 和bottom相似，但是不一样
+
+ctx.textBaseline = 'middle';
+
+
+ctx.fillText(str,w/2,h/2);
+// - measureText() 获取文本宽度obj.width
+//画一条文本下面的线
+ctx.beginPath();
+var textWidth = ctx.measureText(str).width;
+// console.log(textWidth);
+ctx.moveTo(w/2-textWidth/2,h/2+20);
+ctx.lineTo(w/2+textWidth/2,h/2+20);
+ctx.stroke();
+	</script>
+</body>
+</html>

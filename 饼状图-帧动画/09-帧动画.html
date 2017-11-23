@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制图片</title>
+	<style>
+      canvas{
+      	border: 1px solid #ccc;
+      }
+	</style>
+</head>
+<body>
+<canvas width="300" height="300"></canvas>
+<script>
+
+    var mycanvas = document.querySelector('canvas');
+    var ctx = mycanvas.getContext('2d');
+
+   
+    var image = new Image();
+
+    image.onload  = function(){
+      // 动态获取当前图片的尺寸
+      var imageWidth = image.width;
+      var imageHeight = image.height;
+      //计算出每个人物的大小
+      var personWidth = imageWidth/4;
+      var personHeight = imageHeight/4;
+      //在固定的时间间隔更换显示的图片
+      var index = 0;
+      //绘制在画布的中心
+      var x0 = ctx.canvas.width/2-personWidth/2;
+      var y0 = ctx.canvas.height/2-personHeight/2;
+
+     
+    	setInterval(function(){
+       index++;
+
+         ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+         ctx.drawImage(image,index*personWidth,0,personWidth,personHeight,x0,y0,personWidth,personHeight);
+         if(index>2){
+          index = 0;
+         }
+    
+    },100);
+    }
+    image.src = 'image/04.png';
+
+  
+
+
+
+
+</script>
+					    																														
+</body>
+</html>

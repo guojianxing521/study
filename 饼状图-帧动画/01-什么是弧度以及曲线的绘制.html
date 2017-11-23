@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弧度的概念和曲线的绘制</title>
+	<style>
+     canvas{
+     	border:1px solid #ccc;
+     }
+
+	</style>
+</head>
+<body>
+	<!-- 弧度：一弧度等于半径的长度 -->
+	<!-- 一个圆有2π个弧度 -->
+	<!-- 一个角度等于2π/360，也就是π/180弧度 -->
+	<canvas width="500" height="500"></canvas>
+	<script>
+		var mycanvas = document.querySelector('canvas');
+		var ctx = mycanvas.getContext('2d');
+        // 线是由点构成的，曲线可以由数学公式的来
+        //
+        // ctx.moveTo(0,0);
+        for(i = 1;i<600;i++){
+        	var x =i;
+        	// var y = 2*x;
+        	// var y =x/2;
+        	// var y =Math.pow(x+2,2);
+        	var y =Math.pow(x,2);
+        	// var y =Math.pow(x+2,2);
+           
+        	// ctx.beginPath();
+        	ctx.lineTo(x,y);
+        	 ctx.stroke();
+        }
+       
+	</script>
+</body>
+</html>

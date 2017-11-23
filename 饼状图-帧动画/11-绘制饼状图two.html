@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制饼状图</title>
+	<style>
+     canvas{
+        border: 1px solid #ccc;
+     }
+	</style>
+</head>
+<body>
+	<canvas height="600" width="600"></canvas>
+</body>
+   <script>
+   	 
+   	 var PieChart = function(ctx){
+   	 	//第一步，绘制饼状图
+   	 	this.ctx = ctx || document.querySelector('canvas').getContext('2d');
+   	 	//画布的宽高
+   	 	this.w = this.ctx.canvas.width;
+   	 	this.h = this.ctx.canvas.height;
+        //饼状图的中点
+        this.x0 = this.w/2+40;
+        this.y0 = this.h/2;
+        //半径
+        this.radius = 150;
+        //总人数，为了算比例
+        this.total = 0;
+         //定义一个起始位置
+        this.start = 0;
+        
+       
+   	 }
+     PieChart.prototype.init = function(data){
+          this.drawPie(data);
+     }
+     //画饼状图
+     PieChart.prototype.drawPie = function(data){
+         var Data = this.translateData(data);
+         var that = this;
+         // this.translateData(data);
+         //拿到数据开始画饼状图
+        
+         Data.forEach(function(item,i){
+         	 that.end = that.start + item.angle;
+         	 that.ctx.beginPath();
+             that.ctx.moveTo(that.x0,that.y0);
+             that.ctx.arc(that.x0,that.y0,that.radius,that.start,that.end);
+             that.ctx.fillStyle = that.getColor();
+             that.ctx.fill();
+             that.start = that.end; 
+         })
+        
+     }
+     //定义一个数据转化的函数
+     PieChart.prototype.translateData = function(data){
+         //第一次遍历数组，拿到total
+         //注意this
+         var that = this;
+         data.forEach(function(item,i){
+             that.total +=item.num;
+             // console.log(item.num);
+            
+         })
+           // console.log(data);
+           // console.log(that.total); 
+        //第二次遍历，算每个数据的比例
+        data.forEach(function(item,i){
+
+        	var angle = item.num/that.total*(Math.PI*2);
+        	item.angle = angle;
+    })
+    // console.log(data);
+    return data;//转换成功，返回数据
+      
+}
+//定义一个获取随机颜色的函数
+    PieChart.prototype.getColor = function(){
+       var r = Math.floor(Math.random()*256);
+       var g = Math.floor(Math.random()*256);
+       var b = Math.floor(Math.random()*256);
+       return 'rgb('+r+','+g+','+b+')';
+    }
+     var data = [
+     {
+     	title:'15-20岁',
+     	num:10
+     },
+     {
+     	title:'20-25岁',
+     	num:13
+     },
+     {
+     	title:'25-30岁',
+     	num:30
+     },
+     {
+     	title:'30-35岁',
+     	num:20
+     },
+     {
+     	title:'35-40岁',
+     	num:40
+     },
+     {
+     	title:'40-45岁',
+     	num:12
+     }
+     ]
+
+     var pieChart = new PieChart();
+     pieChart.init(data);
+   </script>
+</html>

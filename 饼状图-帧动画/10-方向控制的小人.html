@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>方向控制的小人</title>
+  <style>
+  canvas{
+    border:1px solid #ccc;
+  }
+
+  </style>
+</head>
+<body>
+  <canvas width="600" height="600"></canvas>
+</body>
+<script>
+  //第一步：初始化
+  var Person = function(ctx){
+      //绘制工具
+      this.ctx = ctx || document.querySelector('canvas').getContext('2d');
+      //图片的src
+      this.src = 'image/04.png';
+      //图片的位置
+      //图片加载完毕才能在知道
+
+
+      //鼠标按下事件
+      //走的步子大小
+      //往那个方向走
+      //起始位置
+      this.index = 0;//图片左右
+      this.direction = 0;//图片上下
+      this.stepSize = 10;//步子大小
+      this.stepX = 0;//记录x轴的偏移步数
+      this.stepY = 0;//记录y轴的偏移步数
+     
+      this.init();
+   }
+   //第三步
+  Person.prototype.init = function(){
+    //存一下this
+    var that = this;
+    // console.log(this);
+    //回调函数
+    this.loadImage(function(image){
+    //目标，把图片的初始状态放好
+    
+    //获取图片的起始位置
+    that.x0 = that.ctx.canvas.width/2 - image.width/4/2;
+    that.y0 = that.ctx.canvas.height/2 - image.height/4/2;
+    //获取图片的宽度
+    that.imageWidth = image.width;
+    that.imageHeight = image.height;
+
+    //显示的宽度和高度
+    that.imgWidth = that.imageWidth/4;
+    that.imgHeight = that.imageHeight/4;
+    // console.log(that);
+    // console.log(image);
+
+    // that.ctx.beginPath();
+    that.ctx.drawImage(image,0,0,that.imgWidth,that.imgHeight,that.x0,that.y0, that.imgWidth,that.imgHeight);
+
+    //第二个目标
+    //添加鼠标按下事件
+    document.onkeydown = function(e){
+      e = e || event;
+      if(e.keyCode == 37){//左
+        //看图片
+        //图片上下
+        that.direction = 1;
+        //x轴步数减一
+        that.stepX--;
+        //执行drawImage函数，画入动画
+        that.drawImage(image);
+      }
+       if(e.keyCode == 38){
+        //看图片
+        that.direction = 3;
+        that.stepY--;
+        that.drawImage(image);
+      }
+       if(e.keyCode ==39){
+        //看图片
+        that.direction = 2;
+        that.stepX++;
+        that.drawImage(image);
+      }
+       if(e.keyCode == 40){
+        //看图片
+        that.direction = 0;
+        that.stepY++;
+        that.drawImage(image);
+      }
+    }
+    })
+  }
+  //画入函数，也就是渲染函数
+  Person.prototype.drawImage = function(image){
+     
+     this.index++;
+     //开始
+     this.ctx.clearRect(0,0,this.ctx.canvas.width,this.ctx.canvas.height);
+     this.ctx.drawImage(image,
+     this.index*this.imgWidth, this.direction*this.imgHeight,
+     this.imgWidth,this.imgHeight,
+     this.x0 + this.stepX*this.stepSize,this.y0 + this.stepY*this.stepSize,
+     this.imgWidth,this.imgHeight
+
+      )
+     if(this.index>=3){
+      this.index = 0;
+     }
+
+  }
+  //第二步
+ //图片加载函数,只负责图片加载完成功能
+ Person.prototype.loadImage = function(callback){
+      //把图片放在内存中
+      //第一步：new一个图片对象
+      var image = new Image();//注意大写
+      //图片加载完成，先绑定事件，防止该事件没有起作用
+      image.onload = function(){
+        //图片加载完毕后做的事
+         callback&&callback(image);//传入实参
+      }
+      //给图片加src
+       image.src = this.src;
+ }
+
+ new Person();
+</script>
+   
+</html>

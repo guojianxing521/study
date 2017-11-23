@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制图片</title>
+	<style>
+      canvas{
+      	border: 1px solid #ccc;
+      }
+	</style>
+</head>
+<body>
+<canvas width="300" height="300"></canvas>
+<script>
+
+    var mycanvas = document.querySelector('canvas');
+    var ctx = mycanvas.getContext('2d');
+
+    //加载图片的几种方式
+
+	// var img = document.creatElement('img');
+	// img.src = 'image/01.jpg';
+    // 必须等图片加载完毕
+     //第一步：创建对象
+     //第二步：绑定加载完成事件
+     //第三步：设置图片路径
+    var image = new Image();
+
+    image.onload  = function(){
+    	// 一定可以使用
+    	console.log(image);
+    	//绘制图片的三种方式
+    	//三个参数：图片对象，绘制在画布上的坐标
+    	// ctx.drawImage(image,100,100);
+    	//五个参数：加了一个图片的宽高，不是裁剪是缩放
+    	//ctx.drawImage(image,100,100,100,100);
+    	//九个参数:第一对参数：图片上定位的坐标 第二对参数：在图片上截取的区域大小
+    	//第三个参数：绘制在画布上的坐标
+    	//第四个参数：在画布上显示的大小
+    	ctx.drawImage(image,100,100,100,100,100,100,100,100)
+    }
+    image.src = 'image/01.jpg';
+
+  
+
+
+
+
+</script>
+					    																														
+</body>
+</html>

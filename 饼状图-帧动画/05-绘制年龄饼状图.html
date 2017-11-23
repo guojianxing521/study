@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+     canvas{
+     	border:1px solid #ccc;
+     }
+
+	</style>
+</head>
+<body>
+	<canvas width="500" height="500"></canvas>
+   <script>
+		var mycanvas = document.querySelector('canvas');
+		var ctx = mycanvas.getContext('2d');
+
+		var data = [5,30,10,20,25];
+        //总人数
+        var total = 0;
+        //1.第一次遍历,获取总人数
+		data.forEach(function(item,i){
+			total+=item;
+			
+		})
+		console.log(total);
+		// 在饼图表示出来
+		//存比例的数组
+        var angleList = []
+		//2.第二次遍历
+		data.forEach(function(item,i){
+			//计算比例
+			var angle = Math.PI*2/total*item;
+			angleList.push(angle);
+		})
+		console.log(angleList);
+		//3.根据弧度绘制扇形
+		//开始位置
+		var start = 0;
+		var w = ctx.canvas.width;
+		var h = ctx.canvas.height;
+		var getColor = function(){
+            var r = Math.floor(Math.random()*256);
+            var g = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+            return 'rgb('+r+','+g+','+b+')';
+        }
+		angleList.forEach(function(item,i){
+
+           //结束弧度
+			var end = start +
+			item;
+			ctx.beginPath();
+			ctx.moveTo(w/2,h/2);
+			ctx.arc(w/2,h/2,150,start,end);
+            ctx.fillStyle = getColor();
+            ctx.fill();
+             //记录一下下次的起始位置
+            start = end;
+
+		})
+	</script>
+</body>
+</html>
