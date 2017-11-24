@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after{
+	padding: 0;
+	margin: 0;
+	/*盒子尺寸计算*/
+	box-sizing: border-box;
+	/*移动端*/
+	-webkit-box-sizing: border-box;
+	/*/去除高亮*/
+	/*移动端a点击时有默认高亮显示*/
+	-webkit-tap-highlight-color: transparent;
+}
+body{
+	font-family: 'Microsoft yahei',sans-serif;
+	color: #ccc;
+	font-size: 14px;
+}
+a{
+	text-decoration: none;
+	color: #ccc;
+}
+ul{
+	list-style: none;
+}
+input,textarea{
+	outline: none;
+	resize: none;
+	border:0;
+	/*移动端输入框有默认的样式*/
+	-webkit-appearance:none;
+}
+/*============================*/
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clearfix::after,
+.clearfix:before{
+	content: '';
+	height: 0;
+	line-height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+}
+[class ^='icon_']{
+	/*图片本来大小的一半200 200*/
+	background: url(../images/sprites.png) no-repeat 10000px 10000px/200px 200px;
+
+}

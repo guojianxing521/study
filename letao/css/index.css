@@ -1,0 +1,218 @@
+.le_layout{
+	width: 100%;
+	max-width: 640px;
+	min-width: 320px;
+	margin: 0 auto;
+
+}
+.le_layout .le_top{
+	width: 100%;
+	position: relative;
+	height: 44px;
+	background: #006699;
+}
+.le_layout .le_top .le_title{
+	width: 100%;
+	text-align: center;
+	line-height: 44px;
+	color: #fff;
+	font-size: 20px;
+
+}
+.le_layout .le_top .icon_search{
+	width: 30px;
+	height: 30px;
+	background: url(../images/sprites.png) no-repeat -123px 0px/300px 300px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+.le_banner{
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.le_banner ul:first-child{
+	width: 800%;
+	transform: translateX(-12.5%);
+/*	position: relative;
+	left: -100%;
+	top: 0;*/
+	/*animation: run 14s linear infinite;*/
+}
+@keyframes run{
+  0%{
+  	transform: translateX(-12.5%);
+  }
+  8.3%{
+  	transform: translateX(-12.5%);
+  }
+  16.6%{
+  	transform: translateX(-25%);
+  } 
+  24.9%{
+  	transform: translateX(-25%);
+  } 
+  33.2%{
+  	transform: translateX(-37.5%);
+  }
+  41.5%{
+  	transform: translateX(-37.5%);
+  }
+  49.8%{
+  	transform: translateX(-50%);
+  } 
+  58.2%{
+  	transform: translateX(-50%);
+  } 
+  66.5%{
+  	transform: translateX(-62.5%);
+  } 
+  74.8%{
+  	transform: translateX(-62.5%);
+  } 
+  83.5%{
+  	transform: translateX(-75%);
+  }
+  90%{
+  	transform: translateX(-75%);
+  }
+  100%{
+  	transform: translateX(-87.5%);
+  }
+  
+}
+.le_banner ul:first-child li{
+	/*七八九的图片是425px*/
+	/*height: 425px;*/
+	width: 12.5%;
+	float: left;
+}
+.le_banner ul:first-child li a{
+	width: 100%;
+	display: block;
+}
+.le_banner ul:first-child li a img{
+	width: 100%;
+	display: block;
+
+}
+.le_banner ul:last-child{
+	position: absolute;
+	bottom: 12px;
+	left: 50%;
+	/*width: 20%;*/
+	/*height: 8px;*/
+	/*line-height: 8px;*/
+	/*background: pink;*/
+	transform: translateX(-50%);
+}
+.le_banner ul:last-child li{
+    float: left;
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+    background: #AAAAAA;
+    border-radius: 50%;
+}
+.le_banner ul:last-child li:last-child{
+    margin-right: 0;
+}
+.le_banner ul:last-child li.now{
+	background: #fff;
+}
+.le_center{
+	width: 92%;
+	margin: 0 auto;
+}
+.le_center li{
+	width: 33.3333%;
+	float: left;
+}
+.le_center li a{
+	width: 100%;
+	display: block;
+}
+.le_center li a img{
+	width: 100%;
+	display: block;
+}
+.le_active{
+	width: 100%;
+	border-top: 1px solid #ccc;
+	margin-bottom: 50px;
+}
+.le_active ul{
+	width: 100%;
+
+}
+.le_active li{
+	width: 33.3333%;
+	float: left;
+}
+.le_active li:nth-child(3){
+	float: right;
+}
+.le_active li a{
+	width: 100%;
+	display: block;
+}
+.le_active li a img{
+	width: 100%;
+	display: block;
+}
+/*底部*/
+.le_bottom{
+   width: 100%;
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   height: 50px;
+   /*background: pink;*/
+}
+.le_bottom .le_bottom_content{
+	/*注意*/
+	/*=====================================*/
+	width: 100%;
+	max-width: 640px;
+	min-width: 320px;
+	background: #006699;
+	margin: 0 auto;
+	height: 50px;
+}
+.le_bottom .le_bottom_content ul{
+	width: 100%;
+}
+.le_bottom .le_bottom_content ul li{
+	width: 25%;
+	float: left;
+	padding-top: 5px;
+}
+.le_bottom .le_bottom_content ul li a{
+	width: 100%;
+	display: block;
+}
+.le_bottom .le_bottom_content ul li a span{
+	width: 30%;
+	display: block;
+	margin: 0 auto;
+	/*注意此处的精灵图*/
+	width: 25px;
+	height: 20px;
+}
+.le_bottom .le_bottom_content ul li:first-child a span{
+	background-position: -35px -32px;
+}
+.le_bottom .le_bottom_content ul li:nth-child(2) a span{
+	background-position: 0 -30px;
+}
+.le_bottom .le_bottom_content ul li:nth-child(3) a span{
+	background-position: -91px -32px;
+}
+.le_bottom .le_bottom_content ul li:nth-child(4) a span{
+	background-position: -125px -32px;
+}
+.le_bottom .le_bottom_content ul li a  p{
+	margin-top: 3px;
+	text-align: center;
+}
