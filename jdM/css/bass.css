@@ -1,0 +1,55 @@
+*,
+*::before,
+*::after{
+	padding: 0;
+	margin: 0;
+	/*元素的宽度从边框算起*/
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	/*去除高亮*/
+	-webkit-tap-highlight-color: transparent;
+}
+body{
+	font-size: 14px;
+	font-family: 'Microsoft YaHei', sans-serif;
+	color: #333;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+input,textarea{
+	outline: none;
+	border:none;
+
+	/**/
+	resize: none;
+	/**/
+	   /*在移动端输入框有 立体样式 默认样式*/
+    -webkit-appearance: none;
+
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clearfix::after,
+.clearfix::before{
+	content: '';
+	height: 0;
+	line-height: 0;
+	display: block;
+	clear: both;
+	visibility: hidden;
+}
+
+/*使用精灵图*/
+/*只需要设置banckground-position,缩小之后的坐标*/
+[class ^='icon_'],
+[class *=' icon_']{
+	background: url(../image/sprites.png) no-repeat 10000px 10000px/200px 200px;
+}
