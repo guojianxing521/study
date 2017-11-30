@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- 1.使用的是中文简体语言 -->
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<!-- 2.提供http协议的响应头报文 -->
+	<meta http-equiv="X-UA-Compatible" content="IE = edge">
+	<!--3.视口宽度与设备一致 视口的缩放比和PC端一致 用户不允许自己缩放-->
+	<meta name="viewport" content='width=device-width,user-scalable=no, initial-scale = 1.0,maximum-scale=1.0,minimum-scale = 1.0'  >
+	<title>响应式布局基本模板</title>
+	<!-- 4.引入bootstrap核心样式 -->
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+	<!--5. html5标签IE8不支持 引入html5shiv 
+	媒体查询IE8不支持 Respond-->
+	<!-- 条件注释 -->
+
+	<!-- [if It IE 9]>
+	<link rel="stylesheet" href="lib/html5shiv/html5shiv.min.js">
+	<link rel="stylesheet" href="lib/respond/respond.min.js">
+	<![endif] -->
+	<style>
+    .container{
+    	background: pink;
+    }
+    .container>.row{
+    	height: 100px;
+    	background: green;
+    }
+     .container>.row div{
+    	height: 50px;
+    	border:1px solid #ccc;
+    }
+    /*可以嵌套*/
+    .container>.row>.col-md-4>.row>.col-md-6{
+    	height: 20px;
+    	border:1px solid #fff;
+    }
+	</style>
+</head>
+<body>
+<!-- 响应式布局容器 -->
+<!-- bootstrap容器有左右15px的间距 -->
+<!--   /*可以嵌套*/ -->
+<!-- 偏移 col-xs-offset-3-->
+<!-- 列排序： -->
+<!-- 拉伸 ： col-push-2 往左定位多少等份-->
+<!--         col-pull - 2 往右定位 -->
+	<div class="container">
+	<div class="row">
+	        <div class="col-md-4">
+	          	<div class="row">
+	          	<!--   margin-right: -15px;
+                  margin-left: -15px; -->
+	        	   <div class="col-md-6"></div>
+	        	       <!--  col-xs-2
+                       position: relative;
+                       min-height: 1px;
+                       padding-right: 15px;
+                       padding-left: 15px; -->
+                   <div class="col-md-6"></div>
+                </div>
+	        </div>
+			<div class="col-md-4">
+				<div class="row">
+			        <div class="col-md-3 col-md-offset-3"></div>
+			         <!-- col-xs-offset-3 margin-left: 25%; -->
+			        <div class="col-md-6"></div>
+		         </div>
+			</div>
+			
+			<div class="col-md-4">
+			<!--   col-*-push-* 往左定位多少等分
+        col-*-pull-* 往右定位多少等分 -->
+				  <div class="row">
+                <div class="col-xs-2 col-xs-push-11">2</div>
+                <!-- left: 83.33333333%; -->
+                <!--   position: relative;
+                       min-height: 1px;
+                       padding-right: 15px;
+                       padding-left: 15px; -->
+                <div class="col-xs-10 col-xs-pull-6">10</div>
+
+            </div>
+			</div>
+		</div>
+
+	</div>
+	
+	<!-- 基于jquery.js -->
+	<!-- 引入jquery -->
+	<script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>响应式布局</title>
+   <link rel="stylesheet" href="icon/font-awesome-4.7.0/css/font-awesome.css">
+	<style>
+   *{
+   	padding: 0;
+   	margin: 0;
+   }
+   .container{
+   	width: 1170px;
+   	height: 1000px;
+   	background: green;
+   	margin: 0 auto;
+   }
+    @media screen and (max-width: 1200px){
+   	.container{
+   		width: 1100px;
+   		background: red;
+   	}
+   }
+   	 @media screen and (max-width: 992px){
+   	.container{
+   		width: 900px;
+   		background: blue;
+   	}
+   }
+   	@media screen and (max-width: 768px){
+   	.container{
+   		width: 100%;
+   		background: yellow;
+   	}
+   }
+
+   /*使用媒体查询*/
+   /*and 后面必须有空格，括号里面是条件*/
+/*   @media screen and (max-width: 768px){
+   	.container{
+   		width: 100%;
+   		background: red;
+   	}
+   }
+   	 @media screen and (max-width: 992px) and (min-width: 768px){
+   	.container{
+   		width: 750px;
+   		background: blue;
+   	}
+   }
+   	@media screen and (max-width: 1200px) and (min-width: 992px){
+   	.container{
+   		width: 990px;
+   		background: yellow;
+   	}
+   }
+    @media screen and (min-width: 1200px){
+   	.container{
+   		width: 1170px;
+   		background: pink;
+   	}
+   }*/
+   @font-face{
+    font-family: guo;
+    src: 
+         url(fonts/icomoon.svg) format('svg'),
+         url(fonts/icomoon.woff) format('woff'),
+         url(fonts/icomoon.eot) format('embedded-opentype'),
+         url(fonts/icomoon.ttf) format('ruetype');
+}
+.icon{
+
+ font-family: guo;
+ font-size: 20px;
+	
+}
+.icon_music::before{
+   content: '\e911';
+
+}
+a{
+   font-size: 100px;
+  /* width: 100px;
+   height: 100px;*/
+   color: red;
+}
+</style>
+</head>
+<body>
+
+	<!-- 兼容更多移动端设备 -->
+	<!-- 更多设备？
+	超小屏设备：手机0-768 
+	小屏设备 768-992px pad 中屏设备（标准显示器）992-1200px
+	大屏设备 笔记本电脑显示器 -->
+	<!-- 在不同的设备用最合适ude布局开发页面 -->
+	<!-- 利用媒体查询，对不同区间内的网页做不同的布局 -->
+	<!-- container 响应式容器 -->
+   <!-- https://icomoon.io/ -->
+	<div class="container">
+   <span class="icon icon_music">傻不</span>
+    <!-- http://www.fontawesome.com.cn/ -->
+  <a href=""><i class="fa fa-download" aria-hidden="true"></i></a>
+   </div>
+  
+</body>
+</html>

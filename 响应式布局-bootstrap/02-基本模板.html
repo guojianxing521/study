@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- 1.使用的是中文简体语言 -->
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<!-- 2.提供http协议的响应头报文 -->
+	<meta http-equiv="X-UA-Compatible" content="IE = edge">
+	<!--3.视口宽度与设备一致 视口的缩放比和PC端一致 用户不允许自己缩放-->
+	<meta name="viewport" content='width=device-width,user-scalable=no, initial-scale = 1.0,maximum-scale=1.0,minimum-scale = 1.0'  >
+	<title>响应式布局基本模板</title>
+	<!-- 4.引入bootstrap核心样式 -->
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+	<!--5. html5标签IE8不支持 引入html5shiv 
+	媒体查询IE8不支持 Respond-->
+	<!-- 条件注释 -->
+
+	<!-- [if It IE 9]>
+	<link rel="stylesheet" href="lib/html5shiv/html5shiv.min.js">
+	<link rel="stylesheet" href="lib/respond/respond.min.js">
+	<![endif] -->
+
+</head>
+<body>
+<!-- 测试 -->
+<!--TODO-->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+	<!-- 引入jquery -->
+	<script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+
+</body>
+</html>

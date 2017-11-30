@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!-- 1.使用的是中文简体语言 -->
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<!-- 2.提供http协议的响应头报文 -->
+	<meta http-equiv="X-UA-Compatible" content="IE = edge">
+	<!--3.视口宽度与设备一致 视口的缩放比和PC端一致 用户不允许自己缩放-->
+	<meta name="viewport" content='width=device-width,user-scalable=no, initial-scale = 1.0,maximum-scale=1.0,minimum-scale = 1.0'  >
+    <title>栅格系统</title>
+	<!-- 4.引入bootstrap核心样式 -->
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+	<!--5. html5标签IE8不支持 引入html5shiv 
+	媒体查询IE8不支持 Respond-->
+	<!-- 条件注释 -->
+
+	<!-- [if It IE 9]>
+	<link rel="stylesheet" href="lib/html5shiv/html5shiv.min.js">
+	<link rel="stylesheet" href="lib/respond/respond.min.js">
+	<![endif] -->
+
+	<style>
+    .container{
+    	background: pink;
+    }
+    .container>.row1{
+    	height: 100px;
+    	background: green;
+ /*   	margin-right: -15px;
+  margin-left: -15px;*/
+    }
+     .container>.row1 div{
+    	height: 50px;
+    	border:1px solid #ccc;
+    }
+    .container>.myRow{
+    	height: 100px;
+    	background: red;
+    }
+	</style>
+</head>
+<body>
+    <!-- 响应式布局容器 -->
+<!-- bootstrap容器有左右15px的间距 -->
+	<div class="container">
+		<!-- 一行分为三等分类 -->
+		<!-- row代表的是行 -->
+		<!-- 可以清除父容器的左右15px的间距
+		margin-left:-15px; -->
+		<div class="row1">
+		<!-- 列 -->
+		<!-- 
+		col-*-*
+		第一个*号，在什么设备范围内生效
+		超小屏xs
+		小屏 sm
+		中屏 md 在中屏及以上生效
+		大屏 lg
+		第二个*号，占多少份
+        默认会把一行分为12等份 可以改：定制bootstrap
+        占12等份当中的几份
+		 -->
+		 <!-- 有左右的padding15 -->
+			<div class="col-sm-4">erdf</div>
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4"></div>
+		</div>
+		<div class="myRow"></div>
+	</div>
+
+	<!-- 引入jquery -->
+	<script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+	
+
+
+	
+
+<!-- .container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+} -->
