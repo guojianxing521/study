@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>苏宁</title>
+    <!-- 引入less文件 -->
+    <!-- <link rel="stylesheet" type="text/less" href="less/index.less"> -->
+    <link rel="stylesheet"  href="less/index.css">
+    <!-- less加载需要时间 -->
+
+    <!-- 引入less的js文件 -->
+    <script src="libs/less/less.min.js"></script>
+    <link rel="stylesheet" href="libs/fa/css/font-awesome.min.css">
+    <!-- 监听 -->
+    <!-- <script>
+    less.watch();  
+    </script> -->
+    <!-- 引入swiper的css样式 -->
+    <link rel="stylesheet" href="libs/swiper/css/swiper.min.css">
+</head>
+<body>
+<!-- 第一件事：less适配 -->
+<!-- <div class="box2" style="font-size:1rem">asdasd</div> -->
+<!-- <style>
+    .container{
+        max-width: 750px;
+        min-width: 320px;
+    }
+</style> -->
+<div class="container">
+   <header>
+       <div class="sn_topBar">
+           <a href="#" class="icon_top_l"></a>
+           <form action="#">
+               <span></span>
+               <input type="text" placeholder="60寸电视免费拿">
+           </form>
+           <a href="#" class="icon_top_r"></a>
+       </div>
+   </header>
+   <style>
+   .swiper-container img{
+    width:100%;
+   } 
+   
+   </style>
+   <div class="sn_banner">
+        <div class="swiper-container">
+                <ul class="swiper-wrapper">
+                        <li  class="swiper-slide"><a href="#"><img src="images/banner08.jpg" alt=""></a></li>
+                        <li  class="swiper-slide"><a href="#"><img src="images/banner01.jpg" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#"><img src="images/banner02.jpg" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#"><img src="images/banner03.jpg" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#"><img src="images/banner04.jpg" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#"><img src="images/banner05.jpg" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#"><img src="images/banner06.jpg" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#"><img src="images/banner07.jpg" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#"><img src="images/banner08.jpg" alt=""></a></li>
+                        <li class="swiper-slide"><a href="#"><img src="images/banner01.jpg" alt=""></a></li>
+                 </ul>
+                <!-- 如果需要分页器 -->
+                <ul class="swiper-pagination">
+                </ul>
+                
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                
+                <!-- 如果需要滚动条 -->
+                <div class="swiper-scrollbar"></div>
+            </div>
+   </div>
+   <div class="sn_nav">
+    <ul class="clearfix">
+        <li><a href="#"><img src="images/nav01.png" alt="">
+            <p>分类</p></a></li>
+        <li><a href="#"><img src="images/nav02.png" alt="">
+            <p>分类</p></a></li>
+        <li><a href="#"><img src="images/nav03.png" alt="">
+            <p>分类</p></a></li>
+        <li><a href="#"><img src="images/nav04.png" alt="">
+            <p>分类</p></a></li>
+        <li><a href="#"><img src="images/nav05.png" alt="">
+            <p>分类</p></a></li>
+        <li><a href="#"><img src="images/nav01.png" alt="">
+            <p>分类</p></a></li>
+        <li><a href="#"><img src="images/nav02.png" alt="">
+            <p>分类</p></a></li>
+        <li><a href="#"><img src="images/nav03.png" alt="">
+            <p>分类</p></a></li>
+        <li><a href="#"><img src="images/nav04.png" alt="">
+            <p>分类</p></a></li>
+        <li><a href="#"><img src="images/nav05.png" alt="">
+            <p>分类</p></a></li>
+    </ul>
+   </div>
+   <footer>
+       <ul class="clearfix">
+        <li><a href="#"><span class="fa fa-home"></span>
+            <p>首页</p></a></li>
+        <li><a href="#"><span class="fa fa-reorder"></span>
+            <p>分类</p></a></li>
+        <li><a href="#"><span class="fa fa-file-text-o"></span>
+            <p>必抢清单</p></a></li>
+        <li><a href="#"><span class="fa fa-user"></span>
+            <p>我的易购</p></a></li>
+        <li><a href="#"><span class="fa fa-suitcase"></span>
+            <p>新手大礼包</p></a></li>
+    </ul>
+   </footer>
+</div>
+<!-- 不基于jquery或zepto，引入这个 -->
+<script src="libs/swiper/js/swiper.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+    window.onload = function(){
+     var mySwiper = new Swiper('.swiper-container', {
+    autoplay: 2000,//可选选项，自动滑动
+    loop:true,//环路
+    // allowTouchMove:true
+
+//     autoplay: {
+//     delay: 8000//5秒切换一次
+//     // disableOnInteraction: false
+    
+//    }
+    autoplayDisableOnInteraction:false,
+      /*4.显示点容器*/
+      pagination:'.swiper-pagination'
+    })
+}
+
+</script>
+</body>
+</html>

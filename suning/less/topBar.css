@@ -1,0 +1,11 @@
+@charset 'utf-8';
+header .sn_topBar {
+  width: 100%;
+  padding: 0 1rem;
+}
+header .sn_topBar > a {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background: red;
+}
