@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    //字符串中某一项出现的次数
+    // var str = "abcoefoxyozzopp";
+    // var o = {};
+    // for(var i = 0;i<str.length;i++){
+    //     var item = str[i];
+    //     var item = str.charAt(i)//返回指定位置的字符
+    //     if(o[item]){
+    //         o[item]+=1
+    //     }else{
+    //         o[item] = 1;
+    //     }
+    // }
+    // for(var k in o){
+    //     console.log(k+"出现的次数是"+o[k])
+    // }
+    // var o = {};
+    // for(var i = 0;i<str.length;i++){
+    //     var item = str[i];
+    //     // console.log(item);
+    //     if(o[item]){
+    //         o[item]++;
+    //     }else{
+    //         o[item]=1;
+    //     }
+    // }
+    // console.log(o)
+    //求某一项出现的索引
+    // var str = "abcoefoxyozzopp";
+    // var index = 0;
+    // while(true){
+    //     index = str.indexOf("o",index);
+    //     if(index==-1){
+    //         break;
+    //     }
+    //     console.log(index);
+    //     index++;
+    // } 
+    // 
+    // 
+    // 截取url地址参数
+    // ?name=zs&age=18&a=1&b=2'
+    // var str = 'ahsjgdjk?name=zs&age=18&a=1&b=2';
+
+    //问号后面的字符串
+    // var index = str.indexOf('?');
+    // str = str.substr(index+1);
+    // console.log(str);
+
+    // //以&分割
+    // var arr = str.split('&');
+    // console.log(arr);
+    // //每一项继续分割
+    // var obj = {};
+    // arr.forEach(function(item,i){
+           
+    //      // console.log(item);  
+    //      var arr2 = item.split('=');
+    //      obj[arr2[0]]= arr2[1];
+    // })
+    // console.log(obj);
+
+
+
+//    function getParamsByUrl () {
+//     var search = location.search;
+//     /*接收url参数的对象*/
+//     var params = {};
+//     if(search){
+//         /*去掉?*/
+//         search = search.substr(1);
+// 
+//         var searchArr = search.split('&');
+//         searchArr.forEach(function (item,i) {
+//             var itemArr = item.split('=');
+//             /*encodeURIComponent 转成url编码  处理特殊字符串的传递*/
+//             /*decodeURIComponent 解url编码码  正常的字符串*/
+//             params[itemArr[0]] = decodeURIComponent(itemArr[1]);
+//         });
+//     }
+//     return params;
+// }
+// 
+// 
+//已知有字符串foo=”get-element-by-id”,写一个function将其转化成驼峰表示法”getElementById”。
+var foo = 'get-element-by-id';
+// function tuof(msg){
+// var index = 0;
+// while(true){
+//     index = msg.indexOf('-',index);
+//     if(index==-1){
+//        break;
+//     }
+//     msg = msg.substring(0,index)+msg.charAt(index+1).toUpperCase()+msg.substr(index+2);
+//     index++;
+// }
+// console.log(msg)
+// }
+// tuof(foo);
+
+
+// function tuof(msg){
+//     var arr = msg.split('-');
+//     var str = '';
+//     arr.forEach(function(item,i){
+//         str+= item.charAt(0).toUpperCase()+ item.substr(1);
+//     })
+
+//     str = str.charAt(0).toLowerCase()+str.substring(1);
+//     console.log(str)
+// }
+
+// tuof(foo);
+
+
+    // function combo(msg){
+//         var arr=msg.split("-");
+//         for(var i=1;i<arr.length;i++){
+//             arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1);
+//         }
+//         msg=arr.join("");
+//         return msg;
+// }
+// 
+// 
+// 
+// 去除字符串中所有的空格
+    // var str = " aaa di djsoa jdi wd ";
+    // // // str = str.trim(); //trim可以去除两边的空格
+    // var arr = str.split(" ");
+    // console.log(arr)//按照空格分隔
+    // str = arr.join("");
+    // console.log(str)
+
+
+
+
+
+    </script>
+</body>
+</html>

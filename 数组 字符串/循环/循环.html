@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    //数组迭代filter
+    //工资的数组[1500,1200,2000,2100,1800]把工资大于等于2000的删除
+    var arr = [1500,1200,2000,2100,1800];
+    // // var newArr = [];
+    // arr = arr.filter(function(element,index,array){
+    //    console.log(element);//数组中的每一项
+    //    console.log(index);//数组的索引值
+    //    // console.log(array);//当前的数组
+    //     if(element>2000){
+    //         return false;
+    //     }
+    //     return true;
+    //    //return element>2000
+    // })
+    // console.log(arr)
+
+
+//2.forEach()
+// arr.forEach(function(ele,index,arr){
+
+// })
+// var arr = [1500,1200,2000,2100,1800];
+// var arrNew = [];
+// arr = arr.forEach(function(ele,index,arr){
+// //    console.log(ele);
+// //    console.log(index);
+// //    console.log(arr);
+//    if(ele>2000){
+//        arrNew.push(ele)
+//    }
+// })
+// console.log(arrNew);
+
+//
+//3.for in 循环对象
+var o = {
+    name:"小明",
+    age:18,
+    gender:"男",
+    run:function(){
+        return this.name+"今年"+this.age;
+    }
+}
+for(var k in o){
+    console.log(k+"-----"+o[k]);
+}
+console.log(o.run())
+
+
+
+    </script>
+</body>
+</html>

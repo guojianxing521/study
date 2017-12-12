@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数组中的方法</title>
+</head>
+<body>
+<script>
+    var arr = [1,2,4,5,3];
+    //1.valueOf()  //返回当前数组对象
+    // console.log(arr.valueOf());//返回当前数组对象
+    // console.log(arr)
+    
+    //2.toString() 以什么什么分割，转成字符串，默认是逗号分割
+    //join()
+    // console.log(arr.toString());//内部调用join(),将数组转换成字符串
+    //console.log(arr.join());//将数组转换为字符串,默认之间中逗号隔开
+    //console.log(arr.join(""));//join传入参数，以参数将数组中的每一项进行间隔
+//    console.log(arr.join("|"));//join传入参数，以参数将数组中的每一项进行间隔
+
+    //3.检测数组
+    //instanceof
+    //console.log(arr instanceof Array);//true//返回一个布尔值
+
+    //Array.isArray();
+    //console.log(Array.isArray(arr))//true返回索引值
+    //console.log(Array.isArray({}));//false返回false
+
+
+
+    //4.数组的增删
+   var arr = [1,2,4,5,3];
+   console.log(arr.push("a"));//向后追加,返回追加后数组的长度
+   // console.log(arr)//返回新的数组
+   console.log(arr.pop());//从后删除,返回被删除的元素 a
+   // console.log(arr);
+   console.log(arr.unshift("A"));//向前追加,返回追加后数组的长度
+   // console.log(arr);//返回新的数组
+   console.log(arr.shift());//向前删除,返回被删除的元素
+   // console.log(arr);//返回新的数组
+//    
+//    
+//    5.数组的位置方法
+        // var arr = ["c", "a", "z", "a", "x","b", "a"];
+
+//    console.log(arr.indexOf("a"));// 1 找到第一个a所在的位置
+//    console.log(arr.lastIndexOf("a"));//6 找到最后一个a所在的位置
+//    console.log(arr.indexOf("a", 1));   //3 从索引值是1开始查找
+//    console.log(arr.indexOf("w"));//找不到就返回-1
+//    
+    // var index = -1;
+//    do{
+//        index = arr.indexOf("a",index+1);
+//        if(index!==-1){
+//            console.log(index)
+//        }
+//    }while(index!=-1)
+
+
+// //第二种
+//    var star = 0;
+//    while(true){
+//        star = arr.indexOf("a",star);
+//        if(star==-1){
+//            break;
+//        }
+//        console.log(star);
+//        star++;
+//    }
+
+
+    //数组去重，根据数组中出现的每一项的次数判断是否重复
+  // var array = ["c","a","z","a","x","a"];
+  // var o = {};
+  // for(var i = 0;i<array.length;i++){
+  //    var item = array[i];
+  //     //console.log(item)
+  //     if(o[item]){
+  //         o[item]++;
+  //     }else{
+  //         o[item] = 1;
+  //     }
+  // }
+  // for(var k in o){
+  //     if(o[k]==1){
+  //         console.log(k)
+  //     }
+  // }
+  // 
+  // 
+  // 6.翻转数组
+  // //将字符串数组的顺序进行反转。["a","b","c","d"]变为["d","c","b","a"]。（三种方式）
+//    var arr = ["a","b","c","d"];
+    //1.
+//    function reverse(arr){
+//        var newArr = [];
+//        for(var i = 0;i<arr.length;i++){
+//                newArr[i] = arr[arr.length-1-i]
+//        }
+//        return newArr;
+//    }
+//console.log(reverse(arr));
+
+//2.
+   // function reverse(arr){
+   //     for(var i = 0;i<arr.length/2;i++){
+   //         var tmp = arr[i];
+   //         arr[i] = arr[arr.length-1-i];
+   //         arr[arr.length-1-i] = tmp;
+   //     }
+   //     return arr;
+   // }
+   //  console.log(reverse(arr));
+
+    //3.
+//    console.log(arr.reverse())
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
