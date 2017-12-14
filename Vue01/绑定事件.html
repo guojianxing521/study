@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	  <script src="./lib/vue-2.5.9.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="点一下胖三斤" v-on:click="add">
+		<h3>郭的真实体重:{{ weight }}</h3>
+	</div>
+	<script>
+		const vm = new Vue({
+			el:'#app',
+			data:{
+				weight:3
+			},
+			methods:{
+				add(){
+					this.weight+=3;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

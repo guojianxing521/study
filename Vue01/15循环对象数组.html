@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="./lib/vue-2.5.9.js"></script>
+</head>
+<body>
+<div id="app">
+	<ul>
+		<!-- <li v-for="item in per">{{item}}</li> -->
+		<li v-for="(item,i) in per">{{item}}--id:--{{item.id}}----{{item.name}}-----{{i}}</li>
+
+	</ul>
+</div>
+	<script>
+		const vm = new Vue({
+           el:'#app',
+           data:{
+           	per:[
+           	  { id: 1, name: '嬴政' },
+		      { id: 2, name: '李斯' },
+		      { id: 3, name: '吕不韦' },
+		      { id: 4, name: '尉缭子' }
+           	]
+           },
+           methods:{
+
+           }
+		})
+	</script>
+</body>
+</html>

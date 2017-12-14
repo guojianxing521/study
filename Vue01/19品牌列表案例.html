@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+     <script src="./lib/vue-2.5.9.js"></script>
+</head>
+<body>
+	 <div id="app">
+    <div>
+
+      <label>Id:</label>
+      <input type="text" >
+      <label>Name:</label>
+      <input type="text">
+      <input type="button" value="添加" class="btn btn-primary" >
+
+    </div>
+     <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>CTime</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <a href="http://www.baidu.com">删除</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+    	const vm = new Vue({
+    		el:"#app",
+    		data:{
+              list: [
+		      { id: 1, name: '奔驰', ctime: new Date() },
+		      { id: 2, name: '宝马', ctime: new Date() }
+		    ]
+    		},
+    		methods:{
+
+    		}
+    	})
+    </script>
+</body>
+</html>

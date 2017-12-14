@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./lib/vue-2.5.9.js"></script>
+</head>
+<body>
+	<div id="app">
+	    ID:<input type="text" v-model="id">
+	    Name:  <input type="text" v-model='name'>
+	    <input type="button" value="添加" @click="add">
+		<ul>
+		  <!-- 今后,只要涉及到了  v-for 这种循环,推荐,给 循环的每一项添加 :key 属性 -->
+      <!-- 其中, :key 属性,只接受 number 或 string 类型的数据,不要直接为 :key 指定对象 -->
+      <!-- :key 指定的值,必须具有唯一性 -->
+			<li v-for="item in person" :key="item.id">
+            <input type="checkbox">
+			id:{{item.id}}---------{{item.name}}
+			</li>
+		</ul>
+	</div>
+	<script>
+		const vm = new Vue({
+			el:'#app',
+			data:{
+				id:'',
+				name:'',
+				person:[
+				 { id: 1, name: '嬴政' },
+		          { id: 2, name: '李斯' },
+		          { id: 3, name: '吕不韦' },
+		          { id: 4, name: '尉缭子' }
+				]
+			},
+			methods:{
+              add(){
+              	//往前面添加，选中第二个会有问题，不跟着本来选中的走
+              	//所以用到了key属性
+              	var info ={id:this.id,name:this.name};
+              	this.person.unshift(info)
+              }
+			}
+		})
+	</script>
+</body>
+</html>

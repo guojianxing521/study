@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="./lib/vue-2.5.9.js"></script>
+</head>
+<body>
+<div id="app">
+	<ul>
+		<!-- <li v-for="item in per">{{item}}</li> -->
+		<li v-for="(value,key,i) in person">{{value}}----{{key}}-------{{i}}</li>
+
+	</ul>
+</div>
+	<script>
+		const vm = new Vue({
+           el:'#app',
+           data:{
+           	 person: {
+	          id: 1,
+	          name: '泥巴巴',
+	          age: 22,
+	          gender: '男'
+        }
+           },
+           methods:{
+
+           }
+		})
+	</script>
+</body>
+</html>

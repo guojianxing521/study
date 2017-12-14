@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<!-- 第一步：引包 -->
+	<script src="./lib/vue-2.5.9.js"></script>
+</head>
+<body>
+	<!-- 第二步:创建一个容器，使用Vue来控制这个区域里面的DOM元素 -->
+	<div id="app">
+		<p>{{value}}</p>
+		<h3 v-text="value"></h3>
+		<div>{{htmlValue}}</div>
+		<div v-html="htmlValue"></div>
+		<div v-text="htmlValue"></div>
+		<input type="button" :value="btnValue" v-bind:title="btnValue">
+	</div>
+	<script>
+		const vm = new Vue({
+			el:'#app',
+			data:{
+				value:"哈哈哈",
+				htmlValue:'<h1>标题</h1>',
+				btnValue:'按钮',
+
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跑马灯</title>
+	<script src="./lib/vue-2.5.9.js"></script>
+</head>
+<body>
+  <div id="app">
+  	<input type="button" value="浪起来" @click="lang">
+  	<input type="button" value="停止" @click="stop">
+  	<h3>{{ msg }}</h3>
+  </div>
+  <script>
+  	const vm = new Vue({
+  		el:"#app",
+  		data:{
+           msg:"我要加油，你也要加油",
+           timer:null
+  		},
+  		methods:{
+  			lang(){
+  				//开一个定时器
+  				if(this.timer){
+  					return;
+  				}
+  				this.timer = setInterval(()=>{
+                  //
+                  let head = this.msg.substr(0,1);
+                  let body = this.msg.substr(1)
+                  console.log(head);
+                  this.msg = body
+                  +head;
+  				},300)
+  			},
+  			stop(){
+  				clearInterval(this.timer);
+  				this.timer  = null;
+  			}
+  		}
+  	})
+  </script>
+</body>
+</html>

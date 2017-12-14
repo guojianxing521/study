@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 <script src="./lib/vue-2.5.9.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="one">
+		<select v-model="opt">
+			<option>+</option>
+			<option>-</option>
+			<option>*</option>
+			<option>/</option>
+		</select>
+		<input type="text" v-model='two'>
+		<input type="button" value="=" @click="result">
+		<input type="text" v-model='res'>
+
+	</div>
+	<script>
+	//双向数据绑定
+		const vm = new Vue({
+			el:'#app',
+			data:{
+				one:0,
+				opt:'-',
+				two:0,
+				res:0
+			},
+			methods:{
+				result(){
+					//eval() 函数可计算某个字符串,并执行其中的的 JavaScript 代码
+                   eval(`this.res =${this.one} ${this.opt} ${this.two}`);
+                   eval(`this.res =parseFloat(this.one) ${this.opt} parseFloat(this.two)`);
+				}
+			}
+		})
+	</script>
+</body>
+</html>
