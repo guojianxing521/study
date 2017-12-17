@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.5.9.js"></script>
+  <!-- 1. 导入 vue-router -->
+  <script src="./lib/vue-router-v3.0.1.js"></script>
+</head>
+<body>
+ <!-- 2.  -->
+ <!-- 5 -->
+ <div id="app">
+ <!-- 表示路由链接， router-link 默认渲染为 a 标签  -->
+   <router-link to='login' tag='span'>登录</router-link>  
+   <router-link to='reg'>注册</router-link>  
+   <!-- 路由的坑 ，将来用来把匹配到的组件，呈现到这个坑中 -->
+   <router-view></router-view>
+ </div>
+ <script>
+ //4.创建路由对象
+ const login = {
+   template:'<h1>登录页</h1>'
+  }
+  const reg ={
+    template:'<h1>注册页</h1>'
+  }
+  // 第二种只接受对象，不接受构造函数
+ const router = new VueRouter({
+  // 注意属性routes
+  routes:[// 路由规则的数组
+    // {path:'/',component:login},
+    //重定向
+    {path:'/',redirect:'/login'},
+    {path:'/login',component:login},
+    {path:'/reg',component:reg}
+  ]
+ })
+   // 3.创建实例
+   const vm = new Vue({
+    el:'#app',
+    data:{},
+    methods:{},
+    // 6
+    //把路由对象，通过 vm 的 router 属性，挂载到 vm 上
+    router
+   })
+ </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.5.9.js"></script>
+</head>
+
+<body>
+ <div id="app">
+   <a href="#/a">a</a>
+   <a href="#/b">b</a>
+   <a href="#/c">c</a>
+
+<!-- 可以渲染不同的组件，根据该变量的值 -->
+   <component :is = 'comname'></component>
+ </div>
+
+  <script>
+    Vue.component('com1',{
+      template:'<h1>这是第一个组件</h1>'
+    })
+    Vue.component('com2',{
+      template:'<h1>这是第二个组件</h1>'
+    })
+     Vue.component('com3',{
+      template:'<h1>这是第三个组件</h1>'
+    })
+
+     //创建实例
+     const vm = new Vue({
+      el:'#app',
+      data:{
+        comname:'com1'
+      },
+      methods:{},
+      //等到页面渲染完之后，做一些事情
+      mounted(){
+        //哈希值改变就触发
+        window.onhashchange = ()=>{
+         const hash = location.hash;
+         // console.log(hash)
+         switch(hash){
+          case '#/a':
+          this.comname = 'com1'
+          break;
+          case '#/b':
+          this.comname = 'com2'
+          break;
+          case '#/c':
+          this.comname = 'com3'
+          break;
+         }
+        }
+      }
+     })
+  </script>
+
+</body>
+
+</html>

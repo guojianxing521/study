@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 1. 导入Vue的包 -->
+  <script src="./lib/vue-2.5.9.js"></script>
+</head>
+
+<body>
+<div id="app">
+  <!-- 第三步 -->
+  <my-component></my-component>
+</div>
+<script>
+//注意确保在初始化根实例之前注册组件：
+  const com2Obj = {
+    template:"<h1>这是直接使用 Vue.component 创建出来的组件</h1>"
+  }
+  //注册，第二个参数也可以是对象
+  Vue.component('my-component',com2Obj)
+// 第一步：创建根实例
+  const vm = new Vue({
+    el:"#app",
+    data:{},
+    methods:{},
+    filters:{},
+    diractive:{},
+    created(){},
+    mounted(){}
+  })
+
+</script>
+</body>
+
+</html>

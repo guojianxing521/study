@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 1. 导入Vue的包 -->
+  <script src="./lib/vue-2.5.9.js"></script>
+</head>
+
+<body>
+<div id="app">
+<!-- 第四步 -->
+   <my-component></my-component>
+   <my-component2></my-component2>
+
+</div>
+<div id="app2">
+   <!-- <my-component2></my-component2> -->
+   <!-- 私有的不能使用 -->
+  
+</div>
+
+  <!-- 第三步解决了只能提示的问题-->
+  <template id='temp'>
+    <h1>我是在外界定义的组件UI解构</h1>
+ </template>
+
+
+
+
+<script>
+
+//注意确保在初始化根实例之前注册组件：
+  const com3Obj = {
+    template:"#temp"//template 属性，表示这个组件的 UI 代码解构
+  }
+  //注册，第一个参数为组件的名称，第二个参数组件的构造函数，也可以是对象
+  Vue.component('my-component',com3Obj)
+// 第一步：创建根实例
+  const vm = new Vue({
+    el:"#app",
+    data:{},
+    methods:{},
+    // 
+    components:{
+      // 名称
+      "my-component2":{
+        // 属性
+        template:"<h1>这是定义的私有的组件</h1>"
+        // template:"#temp"
+      }
+
+    }
+  })
+const vm2 = new Vue({
+  el:"#app2"
+})
+</script>
+</body>
+
+</html>

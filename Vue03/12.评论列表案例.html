@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.5.9.js"></script>
+</head>
+
+<body>
+  <div id="app">
+      <com1 @add='add'></com1>
+      <ul>
+          <com2 v-for='(item,i) in list' :key='item.name' :item1='item'></com2>
+      </ul>
+  </div>
+<script>
+//第二步：创建组件  第三件事：实现添加功能,子组件传递数据给父元素
+ Vue.component('com1',{
+    template:`<div>
+      <label>评论人：</label>
+      <br>
+      <input type="text" v-model='name'>
+      <br>
+      <label>评论内容：</label>
+      <br>
+      <textarea v-model='content'></textarea>
+      <br>
+      <input type="button" value="发表评论" @click='sonadd'>
+    </div>`,
+   data:function(){
+   return {
+     name:'',
+     content:''
+   }
+},
+   methods:{
+     sonadd(){
+        const data = {name:this.name,content:this.content};
+        //调用父元素的add方法,传参,重点，子组件向父组件传参
+        this.$emit('add',data);
+        this.name='';
+        this.content='';
+     }
+   }
+})
+ Vue.component('com2',{
+    template:`<li>
+      <h3>评论人：{{item1.name}}</h3>
+      <h5>评论内容：{{item1.content}}</h5>
+    </li>`,
+    props:['item1']//重点，子组件要用父组件的数据
+ })
+// 第一步：创建实例
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            name:'',
+            content:'',
+            list:[
+              { name: 'zs', content: '沙发' },
+              { name: 'ls', content: '板凳' },
+              { name: 'qqq', content: '凉席' },
+              { name: 'eee', content: '砖头' }
+            ]
+        },
+        methods:{
+            add(data){
+             //点击按钮，获取数据，添加到list中
+             this.list.push(data)
+            }
+        }
+    })
+</script>
+</body>
+
+</html>
