@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>品牌列表</title>
+  <link rel="stylesheet" href="./lib/bootstrap-3.3.7.css">
+  <script src="./lib/vue-2.5.9.js"></script>
+
+</head>
+<body>
+  <div id="app">
+    <div>
+      <label>Id:</label>
+      <input type="text" v-model="id"> 
+      <label>name:</label>
+      <input type="text" v-model="name">
+      <input type="button" value="添加" class="btn btn-primary" @click="add">
+      <span v-color="'pink'" v-blod='900'>按照品牌名称检索:</span>
+      <input type="text" @change="searchFormat" v-model='keywords' v-focus>
+    </div>
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>CTime</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in searchFormat()" :key="item.id">
+              <td>{{ item.id }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.ctime }}</td>
+             <td><a href="#" @click.prevent="del(item.id)">删除</a></td>
+            </tr>
+          </tbody> 
+    </table>
+  </div>
+  <script>
+
+
+//全局 自定义指令
+//第一个参数为指令名,第二个参数为对象
+  Vue.directive('focus',{
+    //钩子函数 当指令绑定到的元素，被Vue实例解析的时候，就会 立即执行 bind 函数
+         // 参数列表中的 第一个参数，永远是  el 表示被绑定指令的那个元素
+          //  如果要操作元素的样式， 写到 bind 就行了
+    bind:function(el){
+      
+    },
+     // 调用时机： 当 指令绑定到的元素，被插入到文档的父节点时候，调用 inserted 函数
+      // 今后在自定义指令的时候，如果 需要操作 元素的JS行为了，最好写到 inserted 中
+    inserted:function(el){
+       el.focus();
+    }
+  })
+//第二个自定义全局指令，传参
+  Vue.directive('color',{
+    bind(el,binding){
+      console.log(binding)
+      el.style.color = binding.value||'red';
+    },
+    inserted(el){
+
+    }
+  })
+    const vm = new Vue({
+      el:'#app',
+      data:{
+        id:'',
+        name:'',
+        keywords:'',
+        list:[
+        { id: 1, name: '奔驰', ctime: new Date() },
+        { id: 2, name: '宝马', ctime: new Date() },
+        { id: 3, name: '千里马', ctime: new Date() },
+        { id: 4, name: '奔奔', ctime: new Date(), }
+        ]
+      },
+      methods:{
+        add(){
+          this.list.push({id:this.id,name:this.name,ctime:new Date()});
+          this.id = this.name ='';
+        },
+        del(id){
+          const index = this.list.findIndex((item,i,arr)=>{
+           return item.id ==id;
+          })
+          this.list.splice(index,1)
+        },
+        searchFormat(){
+          //  return this.list.filter((item,i,arr)=>{
+          //   return item.name.includes(this.keywords)
+          //   })
+          return this.list.filter(item=>item.name.includes(this.keywords))
+        }
+      },
+      filters:{},
+      directives:{
+        blod:{
+          bind(el,bind){
+            el.style.fontWeight = bind.value ||100;
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.5.9.js"></script>
+</head>
+<body>
+  <div id="app">
+     <h2>{{ msg | strFormat('呵呵') | addstr}}</h2>    
+  </div>
+  <div id="app2">
+      <h2>{{ msg | strFormat('呵呵') | addstr}}</h2>    
+   </div>
+  <script>
+    // 全局过滤器，第一个参数为过滤器名称，第二个参数为一个匿名函数，函数的第一个参数为管道符前面的数据，第二个之后可以传参
+     Vue.filter('strFormat',function(data,str='哈哈'){
+       return data.replace(/纯洁/g,str);
+     })
+
+    const vm = new Vue({
+      el:'#app',
+      data:{
+        msg: '曾经，我也是一个纯洁的人，纯洁的我傻傻的问：世界上最纯洁的男人是谁？？？'
+      },
+      methods:{ },
+      filters:{ //当前实例私有的过滤器
+        // addstr:function(data){
+        //   return data+'3333'
+        // }
+        addstr(data){
+          return data+'我是第一个实例的私有过滤器'
+        }
+
+      }
+    })
+
+
+    // 第二个实例
+    const vm2 = new Vue({
+      data:{
+        msg: '曾经，我也是一个纯洁的人，纯洁的我傻傻的问：世界上最纯洁的男人是谁？？？'
+      },
+      filters:{
+       
+      }
+    })
+
+    vm2.$mount('#app2')
+  </script>
+</body>
+</html>
