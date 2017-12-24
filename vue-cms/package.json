@@ -36,9 +36,12 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "babel-plugin-transform-remove-strict-mode": "0.0.2",
     "bootstrap": "^3.3.7",
     "mint-ui": "^2.2.13",
+    "moment": "^2.20.1",
     "vue": "^2.5.13",
+    "vue-preview": "^1.0.5",
     "vue-router": "^3.0.1"
   }
 }
